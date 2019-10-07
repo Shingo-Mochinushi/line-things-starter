@@ -252,8 +252,8 @@ function liffGetButtonStateCharacteristic(characteristic) {
             } else {
                 // release
                 uiToggleStateButton(false);
-                uiCountPressButton();
             }
+            document.getElementById('date_hms').innerText = e.target.value.buffer;
         });
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
