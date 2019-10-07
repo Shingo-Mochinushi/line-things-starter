@@ -46,22 +46,22 @@ function uiToggleLedButton(state) {
     }
 }
 
-function uiCountPressButton() {
-    clickCount++;
+//function uiCountPressButton() {
+//    clickCount++;
+//
+//    const el = document.getElementById("click-count");
+//    el.innerText = clickCount;
+//}
 
-    const el = document.getElementById("click-count");
-    el.innerText = clickCount;
-}
+function uiToggleStateButton(valid) {
+   const el = document.getElementById("btn-state");
 
-function uiToggleStateButton(pressed) {
-    const el = document.getElementById("btn-state");
-
-    if (pressed) {
-        el.classList.add("pressed");
-        el.innerText = "Pressed";
+    if (valid) {
+        el.classList.add("Valid");
+        el.innerText = "Valid";
     } else {
-        el.classList.remove("pressed");
-        el.innerText = "Released";
+        el.classList.remove("Valid");
+        el.innerText = "Invalid";
     }
 }
 
@@ -246,7 +246,7 @@ function liffGetButtonStateCharacteristic(characteristic) {
     characteristic.startNotifications().then(() => {
         characteristic.addEventListener('characteristicvaluechanged', e => {
             const val = (new Uint8Array(e.target.value.buffer))[0];
-            if (val > 0) {
+            if (val == "1") {
                 // press
                 uiToggleStateButton(true);
             } else {
