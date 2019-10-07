@@ -247,13 +247,13 @@ function liffGetButtonStateCharacteristic(characteristic) {
         characteristic.addEventListener('characteristicvaluechanged', e => {
             const val = (new Uint8Array(e.target.value.buffer))[0];
             if (val == "1") {
-                // press
+                // valid
                 uiToggleStateButton(true);
             } else {
-                // release
+                // invalid
                 uiToggleStateButton(false);
             }
-            document.getElementById('date_hms').innerText = e.target.value.buffer;
+            document.getElementById('date_hms').innerText = e.target.value.buffer[0];
         });
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
