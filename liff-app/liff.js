@@ -54,7 +54,7 @@ function uiToggleLedButton(state) {
 //}
 
 function uiToggleStateButton(valid) {
-   const el = document.getElementById("btn-state");
+   const el = document.getElementById("data_state");
 
     if (valid) {
         el.classList.add("Valid");
