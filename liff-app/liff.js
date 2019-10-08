@@ -202,6 +202,10 @@ function liffConnectToDevice(device) {
         };
 
         device.addEventListener('gattserverdisconnected', disconnectCallback);
+        var messages = [
+            { type : "text", text : "HELLO, WORLD!!" }
+        ];
+        liff.sendMessages(messages);
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
