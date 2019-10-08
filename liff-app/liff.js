@@ -253,9 +253,9 @@ function liffGetButtonStateCharacteristic(characteristic) {
                 str = str + String.fromCharCode(val[i]);
             }
 //            var val = new String(arr.toString());
-            document.getElementById('date_hms').innerText = str.substring(1,2)+':'+str.substring(3,4)+':'+str.substring(5,6);
-            document.getElementById('longitude').innerText = str.substring(7,9)+'.'+str.substring(10,11);
-            document.getElementById('latitude').innerText = str.substring(12,13)+'.'+str.substring(14,15);
+            document.getElementById('date_hms').innerText = str.substring(1,3)+':'+str.substring(3,5)+':'+str.substring(5,7);
+            document.getElementById('longitude').innerText = str.substring(7,10)+'.'+str.substring(10,12);
+            document.getElementById('latitude').innerText = str.substring(12,14)+'.'+str.substring(14,16);
             if (str.charAt(0) == '1') {
                 // valid
                 uiToggleStateButton(true);
