@@ -250,7 +250,7 @@ function liffGetButtonStateCharacteristic(characteristic) {
             var str = new String;
             for(var i=0;i<val.length;i++)
             {
-                str = str + val[i].toString();
+                str = str + String.fromCharCode(val[i]);
             }
 //            var val = new String(arr.toString());
             document.getElementById('date_hms').innerText = str;
