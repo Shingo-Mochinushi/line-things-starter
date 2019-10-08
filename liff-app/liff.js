@@ -245,9 +245,10 @@ function liffGetButtonStateCharacteristic(characteristic) {
     // (Get notified when button state changes)
     characteristic.startNotifications().then(() => {
         characteristic.addEventListener('characteristicvaluechanged', e => {
-            const val = (new Uint8Array(e.target.value.buffer))[5];
+//            const val = (new Uint8Array(e.target.value.buffer))[5];
+            val = new String(e.target.value.buffer);
             document.getElementById('date_hms').innerText = val;
-            if (val == "1") {
+            if (val.charAt(0) == "1") {
                 // valid
                 uiToggleStateButton(true);
             } else {
