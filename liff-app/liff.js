@@ -246,7 +246,7 @@ function liffGetButtonStateCharacteristic(characteristic) {
     characteristic.startNotifications().then(() => {
         characteristic.addEventListener('characteristicvaluechanged', e => {
 //            const val = (new Uint8Array(e.target.value.buffer))[5];
-            val = new String(e.target.value.buffer);
+            val = new String(new Uint8Array(e.target.value.buffer));
             document.getElementById('date_hms').innerText = val;
             if (val.charAt(0) == "1") {
                 // valid
