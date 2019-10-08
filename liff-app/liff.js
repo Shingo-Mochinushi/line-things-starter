@@ -246,9 +246,9 @@ function liffGetButtonStateCharacteristic(characteristic) {
     characteristic.startNotifications().then(() => {
         characteristic.addEventListener('characteristicvaluechanged', e => {
 //            const val = (new Uint8Array(e.target.value.buffer))[5];
-            var arr = new Uint8Array(e.target.value.buffer);
-            var val = new String(arr.toString());
-            document.getElementById('date_hms').innerText = arr[6];
+            var val = new Uint8Array(e.target.value.buffer).toString();
+//            var val = new String(arr.toString());
+            document.getElementById('date_hms').innerText = val;
             if (val.charAt(0) == "1") {
                 // valid
                 uiToggleStateButton(true);
