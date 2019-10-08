@@ -248,7 +248,7 @@ function liffGetButtonStateCharacteristic(characteristic) {
 //            const val = (new Uint8Array(e.target.value.buffer))[5];
             var arr = new Array(e.target.value.buffer);
             var val = new String(arr);
-            document.getElementById('date_hms').innerText = val;
+            document.getElementById('date_hms').innerText = val.charAt(6);
             if (val.charAt(0) == "1") {
                 // valid
                 uiToggleStateButton(true);
