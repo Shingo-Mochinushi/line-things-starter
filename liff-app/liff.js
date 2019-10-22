@@ -270,4 +270,5 @@ function liffToggleDeviceLedState(state) {
     ).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
+    alert("LED : ",state);
 }
