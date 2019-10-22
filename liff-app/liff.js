@@ -1,5 +1,5 @@
 // User service UUID: Change this to your generated service UUID
-const USER_SERVICE_UUID         = '6bba175b-2a02-4c80-be06-90315bb8be7d'; // LED, Button
+const USER_SERVICE_UUID         = '7c32c9b1-0a01-42c8-b2a5-4b748559f346'; // LED, Button
 // User service characteristics
 const LED_CHARACTERISTIC_UUID   = 'E9062E71-9E62-4BC6-B0D3-35CDCD9B027B';
 const BTN_CHARACTERISTIC_UUID   = '62FBD229-6EDD-4D1A-B554-5C4E1BB29169';
@@ -129,7 +129,7 @@ function makeErrorMsg(errorObj) {
 // -------------- //
 
 function initializeApp() {
-    liff.init({liffId:"1653319524-1Y8GDnQr"},() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
+    liff.init({liffId:"1653301104-KqB01QM1"},() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
 }
 
 function initializeLiff() {
