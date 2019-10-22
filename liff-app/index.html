@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <script src=" https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <script src="liff.js"></script>
     <link rel="stylesheet" type="text/css" href="liff.css" />
   </head>
@@ -33,22 +33,14 @@
           <td class="device-info-cell device-info-val" id="device-psdi"></td>
         </tr>
         <tr>
-          <th class="device-info-cell device-info-key">Status</th>
+          <th class="device-info-cell device-info-key">Button state</th>
           <td class="device-info-cell device-info-val">
-            <button id="data_state" class="btn data_state" disabled>Invalid</button>
+            <button id="btn-state" class="btn btn-state" disabled>Released</button>
           </td>
         </tr>
         <tr>
-          <th class="device-info-cell device-info-key">Date</th>
-          <td class="device-info-cell device-info-val" id="date_hms">00:00:00</td>
-        </tr>
-        <tr>
-          <th class="device-info-cell device-info-key">Longitude</th>
-          <td class="device-info-cell device-info-val" id="longitude">000.00</td>
-        </tr>
-        <tr>
-          <th class="device-info-cell device-info-key">Latitude</th>
-          <td class="device-info-cell device-info-val" id="latitude">00.00</td>
+          <th class="device-info-cell device-info-key">Click count</th>
+          <td class="device-info-cell device-info-val" id="click-count">0</td>
         </tr>
       </table>
       <hr />
