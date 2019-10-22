@@ -46,22 +46,22 @@ function uiToggleLedButton(state) {
     }
 }
 
-//function uiCountPressButton() {
-//    clickCount++;
-//
-//    const el = document.getElementById("click-count");
-//    el.innerText = clickCount;
-//}
+function uiCountPressButton() {
+    clickCount++;
 
-function uiToggleStateButton(valid) {
-   const el = document.getElementById("data_state");
+    const el = document.getElementById("click-count");
+    el.innerText = clickCount;
+}
 
-    if (valid) {
-        el.classList.add("Valid");
-        el.innerText = "Valid";
+function uiToggleStateButton(pressed) {
+    const el = document.getElementById("btn-state");
+
+    if (pressed) {
+        el.classList.add("pressed");
+        el.innerText = "Pressed";
     } else {
-        el.classList.remove("Valid");
-        el.innerText = "Invalid";
+        el.classList.remove("pressed");
+        el.innerText = "Released";
     }
 }
 
@@ -129,7 +129,7 @@ function makeErrorMsg(errorObj) {
 // -------------- //
 
 function initializeApp() {
-    liff.init(() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
+    liff.init({liffId:"1653319524-1Y8GDnQr"},() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
 }
 
 function initializeLiff() {
@@ -202,10 +202,6 @@ function liffConnectToDevice(device) {
         };
 
         device.addEventListener('gattserverdisconnected', disconnectCallback);
-        var messages = [
-            { type : "text", text : "HELLO, WORLD!!" }
-        ];
-        liff.sendMessages(messages);
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
@@ -249,23 +245,14 @@ function liffGetButtonStateCharacteristic(characteristic) {
     // (Get notified when button state changes)
     characteristic.startNotifications().then(() => {
         characteristic.addEventListener('characteristicvaluechanged', e => {
-//            const val = (new Uint8Array(e.target.value.buffer))[5];
-            var val = new Uint8Array(e.target.value.buffer);
-            var str = new String;
-            for(var i=0;i<val.length;i++)
-            {
-                str = str + String.fromCharCode(val[i]);
-            }
-//            var val = new String(arr.toString());
-            document.getElementById('date_hms').innerText = str.substring(1,3)+':'+str.substring(3,5)+':'+str.substring(5,7);
-            document.getElementById('longitude').innerText = str.substring(7,10)+'.'+str.substring(10,12);
-            document.getElementById('latitude').innerText = str.substring(12,14)+'.'+str.substring(14,16);
-            if (str.charAt(0) == '1') {
-                // valid
+            const val = (new Uint8Array(e.target.value.buffer))[0];
+            if (val > 0) {
+                // press
                 uiToggleStateButton(true);
             } else {
-                // invalid
+                // release
                 uiToggleStateButton(false);
+                uiCountPressButton();
             }
         });
     }).catch(error => {
