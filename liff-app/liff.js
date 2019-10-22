@@ -117,7 +117,7 @@ function uiStatusError(message, showLoadingAnimation) {
     elStatus.innerText = message;
 
     // Hide controls
-    //elControls.classList.add("hidden");
+    elControls.classList.add("hidden");
 }
 
 function makeErrorMsg(errorObj) {
@@ -165,7 +165,6 @@ function liffRequestDevice() {
 
 function liffConnectToDevice(device) {
     device.gatt.connect().then(() => {
-        alert("connected!");
         document.getElementById("device-name").innerText = device.name;
         document.getElementById("device-id").innerText = device.id;
 
@@ -211,7 +210,6 @@ function liffConnectToDevice(device) {
 function liffGetUserService(service) {
     // Button pressed state
     service.getCharacteristic(BTN_CHARACTERISTIC_UUID).then(characteristic => {
-        alert("BTN_CHARACTERISTIC_UUID");
         liffGetButtonStateCharacteristic(characteristic);
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
@@ -220,7 +218,7 @@ function liffGetUserService(service) {
     // Toggle LED
     service.getCharacteristic(LED_CHARACTERISTIC_UUID).then(characteristic => {
         window.ledCharacteristic = characteristic;
-        alert("LED_CHARACTERISTIC_UUID");
+
         // Switch off by default
         liffToggleDeviceLedState(false);
     }).catch(error => {
@@ -270,5 +268,4 @@ function liffToggleDeviceLedState(state) {
     ).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
-    alert("LED : ",state);
 }
