@@ -117,7 +117,7 @@ function uiStatusError(message, showLoadingAnimation) {
     elStatus.innerText = message;
 
     // Hide controls
-    elControls.classList.add("hidden");
+    //elControls.classList.add("hidden");
 }
 
 function makeErrorMsg(errorObj) {
