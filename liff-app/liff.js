@@ -230,7 +230,6 @@ function liffGetUserService(service) {
 function liffGetPSDIService(service) {
     // Get PSDI value
     service.getCharacteristic(PSDI_CHARACTERISTIC_UUID).then(characteristic => {
-        alert("GET PSDI SERVICE");
         return characteristic.readValue();
     }).then(value => {
         // Byte array to hex string
