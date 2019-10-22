@@ -106,7 +106,6 @@ function uiToggleLoadingAnimation(isLoading) {
 
 function uiStatusError(message, showLoadingAnimation) {
     uiToggleLoadingAnimation(showLoadingAnimation);
-    alert(message);
 
     const elStatus = document.getElementById("status");
     const elControls = document.getElementById("controls");
@@ -225,7 +224,6 @@ function liffGetUserService(service) {
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
-        alert("service.getCharacteristic");
 }
 
 function liffGetPSDIService(service) {
