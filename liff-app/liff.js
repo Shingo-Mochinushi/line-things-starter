@@ -174,7 +174,6 @@ function liffConnectToDevice(device) {
 
         // Get service
         device.gatt.getPrimaryService(USER_SERVICE_UUID).then(service => {
-                alert("liffGetUserService");
             liffGetUserService(service);
         }).catch(error => {
             uiStatusError(makeErrorMsg(error), false);
@@ -212,6 +211,7 @@ function liffConnectToDevice(device) {
 function liffGetUserService(service) {
     // Button pressed state
     service.getCharacteristic(BTN_CHARACTERISTIC_UUID).then(characteristic => {
+        alert("service.getCharacteristic");
         liffGetButtonStateCharacteristic(characteristic);
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
