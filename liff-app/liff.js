@@ -211,6 +211,7 @@ function liffConnectToDevice(device) {
 function liffGetUserService(service) {
     // Button pressed state
     service.getCharacteristic(BTN_CHARACTERISTIC_UUID).then(characteristic => {
+        alert("BTN_CHARACTERISTIC_UUID");
         liffGetButtonStateCharacteristic(characteristic);
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
@@ -219,7 +220,7 @@ function liffGetUserService(service) {
     // Toggle LED
     service.getCharacteristic(LED_CHARACTERISTIC_UUID).then(characteristic => {
         window.ledCharacteristic = characteristic;
-
+        alert("LED_CHARACTERISTIC_UUID");
         // Switch off by default
         liffToggleDeviceLedState(false);
     }).catch(error => {
