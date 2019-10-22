@@ -174,13 +174,11 @@ function liffConnectToDevice(device) {
 
         // Get service
         device.gatt.getPrimaryService(USER_SERVICE_UUID).then(service => {
-            alert("USER_SERVICE_UUID");
             liffGetUserService(service);
         }).catch(error => {
             uiStatusError(makeErrorMsg(error), false);
         });
         device.gatt.getPrimaryService(PSDI_SERVICE_UUID).then(service => {
-            alert("PSDI_SERVICE_UUID");
             liffGetPSDIService(service);
         }).catch(error => {
             uiStatusError(makeErrorMsg(error), false);
@@ -232,6 +230,7 @@ function liffGetUserService(service) {
 function liffGetPSDIService(service) {
     // Get PSDI value
     service.getCharacteristic(PSDI_CHARACTERISTIC_UUID).then(characteristic => {
+        alert("GET PSDI SERVICE");
         return characteristic.readValue();
     }).then(value => {
         // Byte array to hex string
