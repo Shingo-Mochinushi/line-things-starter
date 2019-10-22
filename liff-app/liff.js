@@ -174,11 +174,13 @@ function liffConnectToDevice(device) {
 
         // Get service
         device.gatt.getPrimaryService(USER_SERVICE_UUID).then(service => {
+            alert("USER_SERVICE_UUID");
             liffGetUserService(service);
         }).catch(error => {
             uiStatusError(makeErrorMsg(error), false);
         });
         device.gatt.getPrimaryService(PSDI_SERVICE_UUID).then(service => {
+            alert("PSDI_SERVICE_UUID");
             liffGetPSDIService(service);
         }).catch(error => {
             uiStatusError(makeErrorMsg(error), false);
