@@ -209,6 +209,7 @@ function liffConnectToDevice(device) {
 }
 
 function liffGetUserService(service) {
+    alert("liffGetUserService");
     // Button pressed state
     service.getCharacteristic(BTN_CHARACTERISTIC_UUID).then(characteristic => {
         liffGetButtonStateCharacteristic(characteristic);
