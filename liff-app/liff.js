@@ -88,7 +88,7 @@ function uiToggleDeviceConnected(connected) {
         elStatus.classList.add("inactive");
         elStatus.innerText = "Device disconnected";
         // Hide controls
-        elControls.classList.add("hidden");
+        //elControls.classList.add("hidden");
     }
 }
 
@@ -100,7 +100,7 @@ function uiToggleLoadingAnimation(isLoading) {
         elLoading.classList.remove("hidden");
     } else {
         // Hide loading animation
-        elLoading.classList.add("hidden");
+        //elLoading.classList.add("hidden");
     }
 }
 
@@ -117,7 +117,7 @@ function uiStatusError(message, showLoadingAnimation) {
     elStatus.innerText = message;
 
     // Hide controls
-    elControls.classList.add("hidden");
+    //elControls.classList.add("hidden");
 }
 
 function makeErrorMsg(errorObj) {
