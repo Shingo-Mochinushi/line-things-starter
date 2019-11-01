@@ -230,8 +230,8 @@ function liffGetUserService(service) {
     service.getCharacteristic(CONFIG_CHARACTERISTIC_UUID).then(characteristic => {
         return characteristic.readValue();
     }).then(value => {
-        var temp = new Uint8Array(value.buffer);
-        device_nick = String.fromCharCode(temp);
+        device_nick = new Uint8Array(value.buffer).
+            reduce((output,byte) => output + byte.toString(),"");
         document.getElementById("device-nick").innerText = device_nick;
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
