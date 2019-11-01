@@ -234,18 +234,20 @@ function liffGetUserService(service) {
             .reduce((output,byte) => output + String.fromCharCode(byte),"");
         document.getElementById("device-nick").innerText = device_nick;
     }).catch(error => {
+        alert("CONFIG");
         uiStatusError(makeErrorMsg(error), false);
     });
 
-//    service.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
-//        return characteristic.readValue();
-//    }).then(value => {
-//        device_uuid = new Uint8Array(value.buffer)
-//            .reduce((output,byte) => output + String.fromCharCode(byte),"");
-//        document.getElementById("device-uuid").innerText = device_uuid;
-//    }).catch(error => {
-//        uiStatusError(makeErrorMsg(error), false);
-//    });
+    service.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
+        return characteristic.readValue();
+    }).then(value => {
+        device_uuid = new Uint8Array(value.buffer)
+            .reduce((output,byte) => output + String.fromCharCode(byte),"");
+        document.getElementById("device-uuid").innerText = device_uuid;
+    }).catch(error => {
+        alert("CONFIG2");
+        uiStatusError(makeErrorMsg(error), false);
+    });
 }
 
 function liffGetPSDIService(service) {
@@ -258,6 +260,7 @@ function liffGetPSDIService(service) {
             .reduce((output, byte) => output + ("0" + byte.toString(16)).slice(-2), "");
         document.getElementById("device-psdi").innerText = psdi;
     }).catch(error => {
+        alert("PSDI");
         uiStatusError(makeErrorMsg(error), false);
     });
 }
