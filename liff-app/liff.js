@@ -3,8 +3,8 @@ const USER_SERVICE_UUID         = 'f57be904-4ccb-48f5-b704-c00d0af8092d'; // LED
 // User service characteristics
 const LED_CHARACTERISTIC_UUID   = 'E9062E71-9E62-4BC6-B0D3-35CDCD9B027B';
 const BTN_CHARACTERISTIC_UUID   = '62FBD229-6EDD-4D1A-B554-5C4E1BB29169';
-const CONFIG_CHARACTERISTIC_UUID = "dbffa9a4-f94b-11e9-a13e-c7c134711c2c";
-const CONFIG2_CHARACTERISTIC_UUID = "ea9a3252-fa33-11e9-9747-1f2349711930";
+const CONFIG_CHARACTERISTIC_UUID = "DBFFA9A4-F94B-11E9-A13E-C7C134711C2C";
+const CONFIG2_CHARACTERISTIC_UUID = "EA9A3252-FA33-11E9-9747-1F2349711930";
 
 // PSDI Service UUID: Fixed value for Developer Trial
 const PSDI_SERVICE_UUID         = 'E625601E-9E55-4597-A598-76018A0D293D'; // Device ID
@@ -227,15 +227,15 @@ function liffGetUserService(service) {
         uiStatusError(makeErrorMsg(error), false);
     });
 
-//    service.getCharacteristic(CONFIG_CHARACTERISTIC_UUID).then(characteristic => {
-//        return characteristic.readValue();
-//    }).then(value => {
-//        const device_nick = new Uint8Array(value.buffer)
-//            .reduce((output,byte) => output + String.fromCharCode(byte),"");
-//        document.getElementById("device-nick").innerText = device_nick;
-//    }).catch(error => {
-//        uiStatusError(makeErrorMsg(error), false);
-//    });
+    service.getCharacteristic(CONFIG_CHARACTERISTIC_UUID).then(characteristic => {
+        return characteristic.readValue();
+    }).then(value => {
+        const device_nick = new Uint8Array(value.buffer)
+            .reduce((output,byte) => output + String.fromCharCode(byte),"");
+        document.getElementById("device-nick").innerText = device_nick;
+    }).catch(error => {
+        uiStatusError(makeErrorMsg(error), false);
+    });
 
 //    service.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
 //        return characteristic.readValue();
