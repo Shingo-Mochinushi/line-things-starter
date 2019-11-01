@@ -228,20 +228,20 @@ function liffGetUserService(service) {
     });
 
     service.getCharacteristic(CONFIG_CHARACTERISTIC_UUID).then(characteristic => {
-        return characteristic.readValue();
+        return await characteristic.readValue();
     }).then(value => {
-        const device_nick = new Uint8Array(value.buffer);
-//            .reduce((output,byte) => output + String.fromCharCode(byte),"");
+        const device_nick = new Uint8Array(value.buffer)
+            .reduce((output,byte) => output + String.fromCharCode(byte),"");
         document.getElementById("device-nick").innerText = device_nick;
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
 
     service.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
-        return characteristic.readValue();
+        return await characteristic.readValue();
     }).then(value => {
-        const device_uuid = new Uint8Array(value.buffer);
-//            .reduce((output,byte) => output + String.fromCharCode(byte),"");
+        const device_uuid = new Uint8Array(value.buffer)
+            .reduce((output,byte) => output + String.fromCharCode(byte),"");
         document.getElementById("device-uuid").innerText = device_uuid;
     }).catch(error => {
         alert(error.message);
