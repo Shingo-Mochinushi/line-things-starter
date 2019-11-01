@@ -131,7 +131,8 @@ function makeErrorMsg(errorObj) {
 // -------------- //
 
 function initializeApp() {
-    liff.init({liffId:"1653372303-wkLaQJxY"},() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
+//    liff.init({liffId:"1653372303-wkLaQJxY"},() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
+    liff.init(() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
 }
 
 function initializeLiff() {
@@ -228,7 +229,7 @@ function liffGetUserService(service) {
     });
 
     service.getCharacteristic(CONFIG_CHARACTERISTIC_UUID).then(characteristic => {
-        return await characteristic.readValue();
+        return characteristic.readValue();
     }).then(value => {
         const device_nick = new Uint8Array(value.buffer)
             .reduce((output,byte) => output + String.fromCharCode(byte),"");
@@ -238,7 +239,7 @@ function liffGetUserService(service) {
     });
 
     service.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
-        return await characteristic.readValue();
+        return characteristic.readValue();
     }).then(value => {
         const device_uuid = new Uint8Array(value.buffer)
             .reduce((output,byte) => output + String.fromCharCode(byte),"");
