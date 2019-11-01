@@ -234,7 +234,6 @@ function liffGetUserService(service) {
             .reduce((output,byte) => output + String.fromCharCode(byte),"");
         document.getElementById("device-nick").innerText = device_nick;
     }).catch(error => {
-        alert("CONFIG");
         uiStatusError(makeErrorMsg(error), false);
     });
 
@@ -245,7 +244,7 @@ function liffGetUserService(service) {
             .reduce((output,byte) => output + String.fromCharCode(byte),"");
         document.getElementById("device-uuid").innerText = device_uuid;
     }).catch(error => {
-        alert("CONFIG2");
+        alert(error);
         uiStatusError(makeErrorMsg(error), false);
     });
 }
