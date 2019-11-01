@@ -10,22 +10,22 @@
 
   <body>
     <!-- Title -->
-    <h2>LINE Things Starter</h2>
+    <h2>LineThings デバイス設定</h2>
     <hr />
     <p>
       <img id="loading-animation" class="" src="loading.gif" height="14px" />
-      <span id="status" class="inactive">Device disconnected</span>
+      <span id="status" class="inactive">device disconnected</span>
     </p>
     <hr />
     <div id="controls" class="hidden">
       <!-- Device Info Table -->
       <table class="device-info-table">
         <tr>
-          <th class="device-info-cell device-info-key">Name</th>
+          <th class="device-info-cell device-info-key">デバイス名</th>
           <td class="device-info-cell device-info-val" id="device-name"></td>
         </tr>
         <tr>
-          <th class="device-info-cell device-info-key">ID</th>
+          <th class="device-info-cell device-info-key">LINE デバイスID</th>
           <td class="device-info-cell device-info-val" id="device-id"></td>
         </tr>
         <tr>
@@ -33,23 +33,20 @@
           <td class="device-info-cell device-info-val" id="device-psdi"></td>
         </tr>
         <tr>
-          <th class="device-info-cell device-info-key">Button state</th>
-          <td class="device-info-cell device-info-val">
-            <button id="btn-state" class="btn btn-state" disabled>Released</button>
-          </td>
+          <th class="device-info-cell device-info-key">デバイス ニックネーム</th>
+          <td class="device-info-cell device-info-val" id="device-nick"></td>
         </tr>
         <tr>
-          <th class="device-info-cell device-info-key">Click count</th>
-          <td class="device-info-cell device-info-val" id="click-count">0</td>
+          <th class="device-info-cell device-info-key">サービスUUID</th>
+          <td class="device-info-cell device-info-val" id="device-uuid"></td>
         </tr>
       </table>
       <hr />
-      <!-- Toggle LED -->
+      <!-- Write UUID -->
       <p>
-        <button id="btn-led-toggle" class="btn btn-led-toggle" onclick="handlerToggleLed()">Switch LED ON</button>
+        <button id="pgmUUID" class="btn pgmUUID" onclick="handlerPgmUUID()">UUID書き込み</button>
       </p>
       <hr />
     </div>
   </body>
-
 </html>
