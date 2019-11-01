@@ -244,7 +244,7 @@ function liffGetUserService(service) {
             .reduce((output,byte) => output + String.fromCharCode(byte),"");
         document.getElementById("device-uuid").innerText = device_uuid;
     }).catch(error => {
-        alert(error);
+        alert(error.message);
         uiStatusError(makeErrorMsg(error), false);
     });
 }
