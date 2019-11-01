@@ -227,6 +227,16 @@ function liffGetUserService(service) {
         uiStatusError(makeErrorMsg(error), false);
     });
 
+//    service.getCharacteristic(CONFIG_CHARACTERISTIC_UUID).then(characteristic => {
+//        return characteristic.readValue();
+//    }).then(value => {
+//        const device_nick = new Uint8Array(value.buffer)
+//            .reduce((output,byte) => output + String.fromCharCode(byte),"");
+//        document.getElementById("device-nick").innerText = device_nick;
+//    }).catch(error => {
+//        uiStatusError(makeErrorMsg(error), false);
+//    });
+
     service.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
         return characteristic.readValue();
     }).then(value => {
@@ -237,20 +247,9 @@ function liffGetUserService(service) {
         alert(error.message);
         uiStatusError(makeErrorMsg(error), false);
     });
-
-    
-    service.getCharacteristic(CONFIG_CHARACTERISTIC_UUID).then(characteristic => {
-        return characteristic.readValue();
-    }).then(value => {
-        const device_nick = new Uint8Array(value.buffer)
-            .reduce((output,byte) => output + String.fromCharCode(byte),"");
-        document.getElementById("device-nick").innerText = device_nick;
-    }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
-    });
 }
 
-function liffGetPSDIService(service) {
+    function liffGetPSDIService(service) {
     // Get PSDI value
     service.getCharacteristic(PSDI_CHARACTERISTIC_UUID).then(characteristic => {
         return characteristic.readValue();
