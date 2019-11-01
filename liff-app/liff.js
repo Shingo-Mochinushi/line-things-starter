@@ -237,12 +237,12 @@ function liffGetUserService(service) {
         uiStatusError(makeErrorMsg(error), false);
     });
 
-    service.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
+    service.getCharacteristic(CONFIG_CHARACTERISTIC_UUID).then(characteristic => {
         return characteristic.readValue();
     }).then(value => {
-//        device_uuid = new Uint8Array(value.buffer)
-//            .reduce((output,byte) => output + String.fromCharCode(byte),"");
-//        document.getElementById("device-uuid").innerText = device_uuid;
+        device_uuid = new Uint8Array(value.buffer)
+            .reduce((output,byte) => output + String.fromCharCode(byte),"");
+        document.getElementById("device-uuid").innerText = device_uuid;
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
