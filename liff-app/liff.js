@@ -241,7 +241,7 @@ function liffGetUserService(service) {
         uiStatusError(makeErrorMsg(error), false);
     });
     
-    servce.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
+    service.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
         window.config2Characteristic = characteristic;
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
