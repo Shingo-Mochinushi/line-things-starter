@@ -109,7 +109,7 @@ function cb_submit(){
     alert(str);
     var buf = str2ab(str);
     alert(buf);
-    window.config2Characteritic.writeValue(buf).catch(error => {
+    window.config2Characteristic.writeValue(buf).catch(error => {
         uiStatusError(makeErrorMsg(error),false);
     });
     window.ledCharacteristic.writeValue(new Uint8Array([0x01])).catch(error => {
