@@ -237,17 +237,6 @@ function liffGetUserService(service) {
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
-
-    service.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
-        return characteristic.readValue();
-    }).then(value => {
-        const device_uuid = new Uint8Array(value.buffer)
-            .reduce((output,byte) => output + String.fromCharCode(byte),"");
-        document.getElementById("device-uuid").innerText = device_uuid;
-    }).catch(error => {
-        alert(error.message);
-        uiStatusError(makeErrorMsg(error), false);
-    });
 }
 
     function liffGetPSDIService(service) {
