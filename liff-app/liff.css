@@ -62,7 +62,8 @@ p {
 input {
   width: 360px;
   height: 32px;
-  margin: 10px 10px;
+  margin: 3px;
   font-family: monospace, monospace;
   font-size:large;
+  text-align:left;
 }
