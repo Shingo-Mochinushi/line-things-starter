@@ -1,4 +1,4 @@
-body, table, form {
+body, table {
   font-size: 14pt;
   font-family: "Montserrat", sans-serif;
   margin: 0pt;
@@ -15,7 +15,7 @@ body, table, form {
 }
 
 p {
-    padding: 0pt 14pt;
+    padding: 14pt 14pt;
 }
 
 .inactive {
