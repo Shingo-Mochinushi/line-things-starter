@@ -108,6 +108,7 @@ function cb_submit(){
     var str = document.getElementById("device-uuid").value;
     alert(str);
     var buf = str2ab(str);
+    alert(buf);
     window.config2Characteritic.writeValue(buf).catch(error => {
         uiStatusError(makeErrorMsg(error),false);
     });
