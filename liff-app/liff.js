@@ -108,7 +108,6 @@ function cb_submit(){
     var str = document.getElementById("device-uuid").value;
     alert(str);
     var buf = str2ab(str);
-    alert(buf);
     window.config2Characteristic.writeValue(buf).catch(error => {
         uiStatusError(makeErrorMsg(error),false);
     });
@@ -186,12 +185,6 @@ function liffConnectToDevice(device) {
             // Remove disconnect callback
             device.removeEventListener('gattserverdisconnected', disconnectCallback);
 
-            // Reset LED state
-            ledState = false;
-            // Reset UI elements
-            uiToggleLedButton(false);
-            uiToggleStateButton(false);
-
             // Try to reconnect
             initializeLiff();
         };
@@ -210,12 +203,8 @@ function liffGetUserService(service) {
         uiStatusError(makeErrorMsg(error), false);
     });
 
-    // Toggle LED
     service.getCharacteristic(LED_CHARACTERISTIC_UUID).then(characteristic => {
         window.ledCharacteristic = characteristic;
-
-        // Switch off by default
-        //liffToggleDeviceLedState(false);
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
@@ -238,11 +227,9 @@ function liffGetUserService(service) {
     });
     
     document.getElementById("device-uuid").value = USER_SERVICE_UUID; // display
-
-    
 }
 
-    function liffGetPSDIService(service) {
+function liffGetPSDIService(service) {
     // Get PSDI value
     service.getCharacteristic(PSDI_CHARACTERISTIC_UUID).then(characteristic => {
         return characteristic.readValue();
@@ -276,13 +263,3 @@ function liffGetButtonStateCharacteristic(characteristic) {
         uiStatusError(makeErrorMsg(error), false);
     });
 }
-
-//function liffToggleDeviceLedState(state) {
-    // on: 0x01
-    // off: 0x00
-//    window.ledCharacteristic.writeValue(
-//        state ? new Uint8Array([0x01]) : new Uint8Array([0x00])
-//    ).catch(error => {
-//        uiStatusError(makeErrorMsg(error), false);
-//    });
-//}
