@@ -26,36 +26,6 @@ window.onload = () => {
 // UI functions //
 // ------------ //
 
-function uiToggleLedButton(state) {
-    const el = document.getElementById("btn-led-toggle");
-    el.innerText = state ? "Switch LED OFF" : "Switch LED ON";
-
-    if (state) {
-      el.classList.add("led-on");
-    } else {
-      el.classList.remove("led-on");
-    }
-}
-
-function uiCountPressButton() {
-    clickCount++;
-
-    const el = document.getElementById("click-count");
-    el.innerText = clickCount;
-}
-
-function uiToggleStateButton(pressed) {
-    const el = document.getElementById("btn-state");
-
-    if (pressed) {
-        el.classList.add("pressed");
-        el.innerText = "Pressed";
-    } else {
-        el.classList.remove("pressed");
-        el.innerText = "Released";
-    }
-}
-
 function uiToggleDeviceConnected(connected) {
     const elStatus = document.getElementById("status");
     const elControls = document.getElementById("controls");
@@ -120,6 +90,8 @@ function makeErrorMsg(errorObj) {
 //
 
 function cb_submit(){
+    alert(document.getElementById("device-nick").innerText);
+    alert(document.getElementById("device-uuid").innerText);
 //    window.ledCharacteristic.writeValue(
 //        state ? new Uint8Array([0x01]) : new Uint8Array([0x00])
 //    ).catch(error => {
