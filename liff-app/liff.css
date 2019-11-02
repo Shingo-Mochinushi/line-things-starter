@@ -10,6 +10,14 @@ p {
     padding: 0pt 14pt;
 }
 
+.inactive {
+    color: #6c757d; /* Gray */
+}
+
+.success {
+    color: #16C464; /* LINE Green */
+}
+
 .error {
     color: #dc3545; /* Red */
 }
