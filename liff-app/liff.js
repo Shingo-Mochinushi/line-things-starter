@@ -102,12 +102,16 @@ function cb_submit(){
     var str = document.getElementById("device-nick").value;
     alert(str);
     var buf = str2ab(str);
-    alert(buf);
     window.configCharacteritic.writeValue(buf).catch(error => {
         uiStatusError(makeErrorMsg(error),false);
     });
-    alert(document.getElementById("device-uuid").value);
-    alert("send!");
+    var str = document.getElementById("device-uuid").value;
+    alert(str);
+    var buf = str2ab(str);
+    window.config2Characteritic.writeValue(buf).catch(error => {
+        uiStatusError(makeErrorMsg(error),false);
+    });
+    alert("変更完了 デバイス再起動");
 }
 
 // -------------- //
