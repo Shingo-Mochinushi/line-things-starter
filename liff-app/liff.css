@@ -49,6 +49,7 @@ p {
 .device-info-key {
     padding-right: 10px;
     word-wrap: none;
+    font-weight: bold;
 }
 
 .device-info-val {
