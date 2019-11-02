@@ -89,15 +89,19 @@ function makeErrorMsg(errorObj) {
 // 「デバイスに反映」ボタンをクリックしたときの処理
 //
 
+function str2ab(str) {
+  var buf = new ArrayBuffer(str.length); // 2 bytes for each char
+  var bufView = new Uint8Array(buf);
+  for (var i=0, strLen=str.length; i < strLen; i++) {
+    bufView[i] = str.charCodeAt(i);
+  }
+  return buf;
+}
+
 function cb_submit(){
     var str = document.getElementById("device-nick").value;
     alert(str);
-    var buf = new Uint8Array();
-    for(var i=0, strlen=str.length;i<strlen;i++)
-    {
-        buf[i]=str.charCodeAt(i);
-        alert(buf[i]);
-    }
+    var buf = str2ab(str);
     alert(buf);
     window.configCharacteritic.writeValue(buf).catch(error => {
         uiStatusError(makeErrorMsg(error),false);
