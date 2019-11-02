@@ -90,8 +90,8 @@ function makeErrorMsg(errorObj) {
 //
 
 function cb_submit(){
-    alert(document.getElementById("device-nick").innerText);
-    alert(document.getElementById("device-uuid").innerText);
+    alert(document.getElementById("device-nick").value);
+    alert(document.getElementById("device-uuid").value);
 //    window.ledCharacteristic.writeValue(
 //        state ? new Uint8Array([0x01]) : new Uint8Array([0x00])
 //    ).catch(error => {
