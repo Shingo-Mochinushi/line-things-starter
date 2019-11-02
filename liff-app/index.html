@@ -35,8 +35,8 @@
       </table>
       <hr />
       <form name="devconf" action=#>
-        <div>デバイス ニックネーム : <input type="text" name="device-nick" id="device-nick"></div>
-        <div>サービス UUID : <input type="text" name="device-uuid" id="device-uuid"></div>
+        <div>デバイス ニックネーム : <input type="text" name="device-nick" id="device-nick" maxlength=16></div>
+        <div>サービス UUID : <input type="text" name="device-uuid" id="device-uuid" maxlength=36></div>
         <input type="button" onclick="cb_submit()" value="デバイスに反映">
       </form>
       <hr />
