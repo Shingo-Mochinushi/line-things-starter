@@ -60,7 +60,8 @@ p {
 }
 
 input {
-  width: 300px;
-  height: 25px;
+  width: 320px;
+  height: 32px;
   font-family: monospace, monospace;
+  font-size:large;
 }
