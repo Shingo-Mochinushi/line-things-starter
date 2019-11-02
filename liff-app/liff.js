@@ -95,7 +95,7 @@ function cb_submit(){
     var buf = new Uint8Array();
     for(var i=0;i<str.length;i++)
     {
-        buf[i]=str.charCodeAt(i);
+        buf[i]=str.charAt(i);
     }
     alert(buf);
     window.configCharacteritic.writeValue(buf).catch(error => {
