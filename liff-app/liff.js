@@ -93,9 +93,10 @@ function cb_submit(){
     var str = document.getElementById("device-nick").value;
     alert(str);
     var buf = new Uint8Array();
-    for(var i=0;i<str.length;i++)
+    for(var i=0, strlen=str.length;i<strlen;i++)
     {
-        buf[i]=str.charAt(i);
+        buf[i]=str.charCodeAt(i);
+        alert(buf[i]);
     }
     alert(buf);
     window.configCharacteritic.writeValue(buf).catch(error => {
