@@ -22,17 +22,6 @@ window.onload = () => {
     initializeApp();
 };
 
-// ----------------- //
-// Handler functions //
-// ----------------- //
-
-function handlerPgmUUID() {
-//    ledState = !ledState;
-
-//    uiToggleLedButton(ledState);
-//    liffToggleDeviceLedState(ledState);
-}
-
 // ------------ //
 // UI functions //
 // ------------ //
@@ -126,7 +115,16 @@ function makeErrorMsg(errorObj) {
     return "Error\n" + errorObj.code + "\n" + errorObj.message;
 }
 
+//
+// 「デバイスに反映」ボタンをクリックしたときの処理
+//
+
 function cb_submit(){
+//    window.ledCharacteristic.writeValue(
+//        state ? new Uint8Array([0x01]) : new Uint8Array([0x00])
+//    ).catch(error => {
+//        uiStatusError(makeErrorMsg(error), false);
+//    });
     alert("send!");
 }
 
@@ -233,11 +231,18 @@ function liffGetUserService(service) {
     });
 
     service.getCharacteristic(CONFIG_CHARACTERISTIC_UUID).then(characteristic => {
+        window.configCharacteritic = characteristic;
         return characteristic.readValue();
     }).then(value => {
         const device_nick = new Uint8Array(value.buffer)
             .reduce((output,byte) => output + String.fromCharCode(byte),"");
         document.getElementById("device-nick").innerText = device_nick;
+    }).catch(error => {
+        uiStatusError(makeErrorMsg(error), false);
+    });
+    
+    servce.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
+        window.config2Characteristic = characteristic;
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
@@ -278,12 +283,12 @@ function liffGetButtonStateCharacteristic(characteristic) {
     });
 }
 
-function liffToggleDeviceLedState(state) {
+//function liffToggleDeviceLedState(state) {
     // on: 0x01
     // off: 0x00
-    window.ledCharacteristic.writeValue(
-        state ? new Uint8Array([0x01]) : new Uint8Array([0x00])
-    ).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
-    });
-}
+//    window.ledCharacteristic.writeValue(
+//        state ? new Uint8Array([0x01]) : new Uint8Array([0x00])
+//    ).catch(error => {
+//        uiStatusError(makeErrorMsg(error), false);
+//    });
+//}
