@@ -111,6 +111,9 @@ function cb_submit(){
     window.config2Characteritic.writeValue(buf).catch(error => {
         uiStatusError(makeErrorMsg(error),false);
     });
+    window.ledCharacteristic.writeValue(new Uint8Array([0x01])).catch(error => {
+        uiStatusError(makeErrorMsg(error), false);
+    });
     alert("変更完了 デバイス再起動");
 }
 
