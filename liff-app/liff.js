@@ -208,7 +208,7 @@ function liffGetUserService(service) {
     }).then(value => {
         const device_nick = new Uint8Array(value.buffer)
             .reduce((output,byte) => output + String.fromCharCode(byte),"");
-        document.getElementById("device-nick").innerText = device_nick;
+        document.getElementById("device-nick").value = device_nick; // display
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
@@ -218,6 +218,10 @@ function liffGetUserService(service) {
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
+    
+    document.getElementById("device-uuid").value = USER_SERVICE_UUID; // display
+
+    
 }
 
     function liffGetPSDIService(service) {
