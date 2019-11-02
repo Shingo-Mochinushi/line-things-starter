@@ -90,13 +90,17 @@ function makeErrorMsg(errorObj) {
 //
 
 function cb_submit(){
-    alert(document.getElementById("device-nick").value);
+    var str = document.getElementById("device-nick").value;
+    alert(str);
+    var buf = new Uint8Array();
+    for(var i=0;i<str.length;i++)
+    {
+        buf[i]=str.charCodeAt(i);
+    }
+    window.configCharacteritic.writeValue(buf).catch(error => {
+        uiStatusError(makeErrorMsg(error),false);
+    });
     alert(document.getElementById("device-uuid").value);
-//    window.ledCharacteristic.writeValue(
-//        state ? new Uint8Array([0x01]) : new Uint8Array([0x00])
-//    ).catch(error => {
-//        uiStatusError(makeErrorMsg(error), false);
-//    });
     alert("send!");
 }
 
