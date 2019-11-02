@@ -58,3 +58,9 @@ p {
     max-width: 200px;
     font-family: monospace, monospace;
 }
+
+input {
+  width: 200px;
+  height: 10px;
+  font-family: monospace, monospace;
+}
