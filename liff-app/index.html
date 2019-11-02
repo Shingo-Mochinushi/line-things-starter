@@ -32,15 +32,12 @@
           <th class="device-info-cell device-info-key">PSDI</th>
           <td class="device-info-cell device-info-val" id="device-psdi"></td>
         </tr>
-        <tr>
-          <th class="device-info-cell device-info-key">デバイス ニックネーム</th>
-          <td class="device-info-cell device-info-val" id="device-nick"></td>
-        </tr>
-        <tr>
-          <th class="device-info-cell device-info-key">サービスUUID</th>
-          <td class="device-info-cell device-info-val" id="device-uuid"></td>
-        </tr>
       </table>
+      <form name="devconf" action=#>
+        <div>デバイス ニックネーム : <input type="text" name="device-nick" id="device-nick"></div>
+        <div>サービス UUID : <input type="text" name="device-uuid" id="device-uuid"></div>
+        <input type="button" onclick="cb_submit()" value="デバイスに反映">
+      </form>
       <hr />
       <!-- Write UUID -->
       <p>
