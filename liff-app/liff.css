@@ -6,6 +6,14 @@ body, table, form {
   padding-top: 18pt;
 }
 
+.btn {
+    padding: 2pt;
+    font-size: 14pt;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
 p {
     padding: 0pt 14pt;
 }
