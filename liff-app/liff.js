@@ -126,6 +126,10 @@ function makeErrorMsg(errorObj) {
     return "Error\n" + errorObj.code + "\n" + errorObj.message;
 }
 
+function cb_submit(){
+    alert("send!");
+}
+
 // -------------- //
 // LIFF functions //
 // -------------- //
