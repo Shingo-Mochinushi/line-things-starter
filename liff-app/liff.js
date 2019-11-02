@@ -97,6 +97,7 @@ function cb_submit(){
     {
         buf[i]=str.charCodeAt(i);
     }
+    alert(buf);
     window.configCharacteritic.writeValue(buf).catch(error => {
         uiStatusError(makeErrorMsg(error),false);
     });
