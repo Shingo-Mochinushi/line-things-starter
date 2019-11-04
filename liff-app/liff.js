@@ -117,6 +117,16 @@ function cb_submit(){
     alert("変更完了 デバイス再起動");
 }
 
+// UUIDをQR読み取りの処理
+function cb_scanqr(){
+    liff.scanCode().then(result => {
+        document.getElementById("device-uuid").value = result.value;
+    }).catch(error => {
+        alert("QRコード読み取り失敗");
+        uiStatusError(makeErrorMsg(error), false);
+    });
+}
+
 // -------------- //
 // LIFF functions //
 // -------------- //
