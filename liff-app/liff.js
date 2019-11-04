@@ -122,8 +122,8 @@ function cb_submit(){
 // -------------- //
 
 function initializeApp() {
-//    liff.init({liffId:"1653372303-wkLaQJxY"},() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
-    liff.init(() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
+    liff.init({liffId:"1653372303-wkLaQJxY"},() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
+//    liff.init(() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
 }
 
 function initializeLiff() {
