@@ -92,8 +92,8 @@ function str2ab(str) {
   return buf;
 }
 
-function cb_submit(){
-    var str = document.getElementById("mode_button").value;
+function cb_submit(value){
+    var str = value;
     alert(str);
     var buf = str2ab(str);
     window.switchCharacteristic.writeValue(buf).catch(error => {
