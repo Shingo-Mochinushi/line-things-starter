@@ -5,6 +5,7 @@ const LED_CHARACTERISTIC_UUID   = 'E9062E71-9E62-4BC6-B0D3-35CDCD9B027B';
 const BTN_CHARACTERISTIC_UUID   = '62FBD229-6EDD-4D1A-B554-5C4E1BB29169';
 const CONFIG_CHARACTERISTIC_UUID = "DBFFA9A4-F94B-11E9-A13E-C7C134711C2C";
 const CONFIG2_CHARACTERISTIC_UUID = "EA9A3252-FA33-11E9-9747-1F2349711930";
+const SWITCH_CHARACTERISTIC_UUID = "0b88c737-3a34-49e1-b69d-00be3b723f4a";
 
 // PSDI Service UUID: Fixed value for Developer Trial
 const PSDI_SERVICE_UUID         = 'E625601E-9E55-4597-A598-76018A0D293D'; // Device ID
@@ -206,19 +207,7 @@ function liffConnectToDevice(device) {
 }
 
 function liffGetUserService(service) {
-    // Button pressed state
-//    service.getCharacteristic(BTN_CHARACTERISTIC_UUID).then(characteristic => {
-//        liffGetButtonStateCharacteristic(characteristic);
-//    }).catch(error => {
-//        uiStatusError(makeErrorMsg(error), false);
-//    });
-
-    service.getCharacteristic(LED_CHARACTERISTIC_UUID).then(characteristic => {
-        window.ledCharacteristic = characteristic;
-    }).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
-    });
-
+    // get GATT characteristic of device's nick-name
     service.getCharacteristic(CONFIG_CHARACTERISTIC_UUID).then(characteristic => {
         window.configCharacteritic = characteristic;
         return characteristic.readValue();
@@ -230,12 +219,13 @@ function liffGetUserService(service) {
         uiStatusError(makeErrorMsg(error), false);
     });
     
-    service.getCharacteristic(CONFIG2_CHARACTERISTIC_UUID).then(characteristic => {
-        window.config2Characteristic = characteristic;
+    // get GATT characteristic of switch
+    service.getCharcteristic(SWITICH_CHARACTERISTIC_UUID).then(characteristic => {
+        window.switchCharacteristic = characteristic;
     }).catch(error => {
+        alert("SWITCH");
         uiStatusError(makeErrorMsg(error), false);
     });
-    
     document.getElementById("device-uuid").value = USER_SERVICE_UUID; // display
 }
 
@@ -250,26 +240,6 @@ function liffGetPSDIService(service) {
         document.getElementById("device-psdi").innerText = psdi;
     }).catch(error => {
         alert("PSDI");
-        uiStatusError(makeErrorMsg(error), false);
-    });
-}
-
-function liffGetButtonStateCharacteristic(characteristic) {
-    // Add notification hook for button state
-    // (Get notified when button state changes)
-    characteristic.startNotifications().then(() => {
-        characteristic.addEventListener('characteristicvaluechanged', e => {
-            const val = (new Uint8Array(e.target.value.buffer))[0];
-            if (val > 0) {
-                // press
-                uiToggleStateButton(true);
-            } else {
-                // release
-                uiToggleStateButton(false);
-                uiCountPressButton();
-            }
-        });
-    }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
 }
