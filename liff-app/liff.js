@@ -220,7 +220,7 @@ function liffGetUserService(service) {
     });
     
     // get GATT characteristic of switch
-    service.getCharcteristic(SWITCH_CHARACTERISTIC_UUID).then(characteristic => {
+    service.getCharacteristic(SWITCH_CHARACTERISTIC_UUID).then(characteristic => {
         window.switchCharacteristic = characteristic;
     }).catch(error => {
         alert("SWITCH");
