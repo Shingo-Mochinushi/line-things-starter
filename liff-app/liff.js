@@ -243,3 +243,4 @@ function liffGetPSDIService(service) {
         uiStatusError(makeErrorMsg(error), false);
     });
 }
+
