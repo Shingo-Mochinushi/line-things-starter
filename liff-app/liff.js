@@ -143,7 +143,7 @@ function liffRequestDevice() {
 
 function liffConnectToDevice(device) {
     device.gatt.connect().then(() => {
-        document.getElementById("device-name").innerText = device.name;
+//        document.getElementById("device-name").innerText = device.name;
         document.getElementById("device-id").innerText = device.id;
 
         // Show status connected
@@ -187,7 +187,7 @@ function liffGetUserService(service) {
     }).then(value => {
         const device_nick = new Uint8Array(value.buffer)
             .reduce((output,byte) => output + String.fromCharCode(byte),"");
-        document.getElementById("device-nick").value = device_nick; // display
+        document.getElementById("device-name").innerText = device_nick; // display
     }).catch(error => {
         uiStatusError(makeErrorMsg(error), false);
     });
@@ -199,7 +199,6 @@ function liffGetUserService(service) {
         alert("SWITCH");
         uiStatusError(makeErrorMsg(error), false);
     });
-    document.getElementById("device-uuid").value = USER_SERVICE_UUID; // display
 }
 
 function liffGetPSDIService(service) {
