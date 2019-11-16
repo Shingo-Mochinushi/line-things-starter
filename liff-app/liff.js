@@ -1,19 +1,12 @@
 // User service UUID: Change this to your generated service UUID
-const USER_SERVICE_UUID         = 'f57be904-4ccb-48f5-b704-c00d0af8092d'; // LED, Button
+const USER_SERVICE_UUID         = 'f57be904-4ccb-48f5-b704-c00d0af8092d';
 // User service characteristics
-const LED_CHARACTERISTIC_UUID   = 'E9062E71-9E62-4BC6-B0D3-35CDCD9B027B';
-const BTN_CHARACTERISTIC_UUID   = '62FBD229-6EDD-4D1A-B554-5C4E1BB29169';
 const CONFIG_CHARACTERISTIC_UUID = "DBFFA9A4-F94B-11E9-A13E-C7C134711C2C";
-const CONFIG2_CHARACTERISTIC_UUID = "EA9A3252-FA33-11E9-9747-1F2349711930";
 const SWITCH_CHARACTERISTIC_UUID = "0b88c737-3a34-49e1-b69d-00be3b723f4a";
 
 // PSDI Service UUID: Fixed value for Developer Trial
 const PSDI_SERVICE_UUID         = 'E625601E-9E55-4597-A598-76018A0D293D'; // Device ID
 const PSDI_CHARACTERISTIC_UUID  = '26E2B12B-85F0-4F3F-9FDD-91D114270E6E';
-
-// UI settings
-let ledState = false; // true: LED on, false: LED off
-let clickCount = 0;
 
 // -------------- //
 // On window load //
@@ -87,7 +80,7 @@ function makeErrorMsg(errorObj) {
 }
 
 //
-// 「デバイスに反映」ボタンをクリックしたときの処理
+// 「退勤/外出/直帰」ボタンをクリックしたときの処理
 //
 
 function str2ab(str) {
@@ -100,41 +93,21 @@ function str2ab(str) {
 }
 
 function cb_submit(){
-    var str = document.getElementById("device-nick").value;
+    var str = document.getElementById("mode_button").value;
     alert(str);
     var buf = str2ab(str);
-    window.configCharacteritic.writeValue(buf).catch(error => {
+    window.switchCharacteristic.writeValue(buf).catch(error => {
         uiStatusError(makeErrorMsg(error),false);
-    });
-    var str = document.getElementById("device-uuid").value;
-    alert(str);
-    var buf = str2ab(str);
-    window.config2Characteristic.writeValue(buf).catch(error => {
-        uiStatusError(makeErrorMsg(error),false);
-    });
-    window.ledCharacteristic.writeValue(new Uint8Array([0x01])).catch(error => {
-        uiStatusError(makeErrorMsg(error), false);
-    });
-    alert("変更完了 デバイス再起動");
-}
-
-// UUIDをQR読み取りの処理
-function cb_scanqr(){
-    liff.scanCode().then(result => {
-        document.getElementById("device-uuid").value = result.value;
-    }).catch(error => {
-        alert("QRコード読み取り失敗");
-        uiStatusError(makeErrorMsg(error), false);
     });
 }
 
 // -------------- //
 // LIFF functions //
+// (LIFF ver.2)   //
 // -------------- //
 
 function initializeApp() {
     liff.init({liffId:"1653372303-wkLaQJxY"},() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
-//    liff.init(() => initializeLiff(), error => uiStatusError(makeErrorMsg(error), false));
 }
 
 function initializeLiff() {
@@ -243,4 +216,3 @@ function liffGetPSDIService(service) {
         uiStatusError(makeErrorMsg(error), false);
     });
 }
-
