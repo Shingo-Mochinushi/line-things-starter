@@ -83,19 +83,21 @@ function makeErrorMsg(errorObj) {
 // 「退勤/外出/直帰」ボタンをクリックしたときの処理
 //
 
-function str2ab(str) {
-  var buf = new ArrayBuffer(str.length); // 2 bytes for each char
-  var bufView = new Uint8Array(buf);
-  for (var i=0, strLen=str.length; i < strLen; i++) {
-    bufView[i] = str.charCodeAt(i);
-  }
-  return buf;
-}
+//function str2ab(str) {
+//  var buf = new ArrayBuffer(str.length); // 2 bytes for each char
+//  var bufView = new Uint8Array(buf);
+//  for (var i=0, strLen=str.length; i < strLen; i++) {
+//    bufView[i] = str.charCodeAt(i);
+//  }
+//  return buf;
+//}
 
 function cb_submit(value){
     var str = value;
     alert(str);
-    var buf = str2ab(str);
+    var buf = new ArrayBuffer(1);
+    var bufView = new Uint8Array(buf);
+    bufView[0] = value;
     window.switchCharacteristic.writeValue(buf).catch(error => {
         uiStatusError(makeErrorMsg(error),false);
     });
